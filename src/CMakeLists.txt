@@ -1,0 +1,9 @@
+# source code
+set ( dummy_SOURCES dummy.f90)
+
+add_executable(dummy ${dummy_SOURCES})
+
+install (TARGETS dummy
+  RUNTIME DESTINATION ${BIN_INSTALL_DIR}
+  LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+  PUBLIC_HEADER DESTINATION ${INCLUDE_INSTALL_DIR})
