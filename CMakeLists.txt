@@ -6,6 +6,8 @@ set (PROJECT_VERSION_PATCH 1)
 set (PROJECT_BUGREPORT "magnus.hagdorn@ed.ac.uk")
 set (PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
 
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+
 enable_language (Fortran)
 
 # make sure all the built Fortran modules end up end the same place to ease
@@ -27,5 +29,8 @@ if (NOT CMAKE_BUILD_TYPE)
       "Choose the type of build, options are: None Debug Release."
       FORCE)
 endif (NOT CMAKE_BUILD_TYPE)
+
+set (NETCDF_F90 "YES")
+find_package (NetCDF REQUIRED)
 
 add_subdirectory (src)
