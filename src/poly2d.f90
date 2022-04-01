@@ -10,13 +10,14 @@ module poly2d
      real :: f
    contains
      procedure :: compute => polynomial2d
+     procedure :: print => polyprint
   end type poly2d_type
 
   interface poly2d_type
      procedure :: load_polynomial2d
   end interface poly2d_type
 
-  private :: polynomial2d
+  private :: polynomial2d, polyprint
 
 contains
   elemental function polynomial2d(this, x, y)
@@ -61,5 +62,18 @@ contains
 
     load_polynomial2d = poly2d_type(a, b, c, d, e, f)
   end function load_polynomial2d
+
+  subroutine polyprint(this)
+    class(poly2d_type), intent(in) :: this
+
+    write(*,*) 'parameters for polynomial'
+    write(*,*) 'z(x,y) = a*x^2 + b*y^2 + c*x*y + d*x + e*y + f'
+    write(*,*) 'a', this%a
+    write(*,*) 'b', this%b
+    write(*,*) 'c', this%c
+    write(*,*) 'd', this%d
+    write(*,*) 'e', this%e
+    write(*,*) 'f', this%f
+  end subroutine polyprint
 
 end module poly2d

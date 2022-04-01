@@ -22,11 +22,13 @@ program dummy
   allocate (character(arglen) :: config)
   call get_command_argument(number=1, value=config)
 
-  polynomial = poly2d_type()
+  polynomial = poly2d_type(config)
 
-  write(*,*) polynomial%compute(0., 0.)
+  call polynomial%print()
 
   mesh = mesh_type(config)
+
+  call mesh%print()
 
   allocate(z(mesh%nx,mesh%ny))
 

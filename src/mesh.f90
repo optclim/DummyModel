@@ -5,12 +5,16 @@ module mesh_mod
   type :: mesh_type
      integer :: nx, ny
      real, dimension(:), allocatable :: x, y
+   contains
+     procedure :: print => print_mesh
   end type mesh_type
 
   interface mesh_type
      procedure :: create_mesh
      procedure :: load_mesh
   end interface mesh_type
+
+  private :: print_mesh
 
 contains
   function create_mesh(x0, y0, dx, dy, nx, ny)
@@ -66,5 +70,13 @@ contains
 
     load_mesh = create_mesh(x0, y0, dx, dy, nx, ny)
   end function load_mesh
+
+  subroutine print_mesh(this)
+    class(mesh_type), intent(in) :: this
+
+    write(*,*) 'mesh'
+    write(*,*) 'nx', this%nx
+    write(*,*) 'ny', this%ny
+  end subroutine print_mesh
 
 end module mesh_mod
