@@ -24,4 +24,4 @@ The program takes two arguments:
 ```bash
 dummy config.nml output.nc
 ```
-The configuration file contains Fortran namelists. See the example [config.nml](../blob/main/example/config.nml). The program produces a netCDF file as output.
+The configuration file contains Fortran namelists. See the example [config.nml](example/config.nml). The program produces a netCDF file as output.
